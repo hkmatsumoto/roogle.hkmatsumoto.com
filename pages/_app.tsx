@@ -1,13 +1,18 @@
+import { useState } from 'react'
+
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 
 import Layout from '../components/layout'
+import { ScopesContext } from '../contexts/scopes'
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
+  const [scopes, setScopes] = useState([] as string[]);
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <ScopesContext.Provider value={{scopes, setScopes}}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ScopesContext.Provider>
   )
 }
-export default MyApp

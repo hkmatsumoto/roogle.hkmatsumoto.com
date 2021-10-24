@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { useRouter } from "next/router"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
+
+import { ScopesContext } from "../contexts/scopes";
 
 type FormData = {
     query: string,
@@ -10,6 +13,7 @@ type FormData = {
 export default function Header() {
     const router = useRouter();
     const { register, handleSubmit } = useForm();
+    const { scopes } = useContext(ScopesContext);
 
     const onSubmit = (data: FormData) => {
         router.push({
@@ -29,9 +33,11 @@ export default function Header() {
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <select {...register("scope")}>
-                    <option value="set:libstd">set:libstd</option>
-                    <option value="set:rustc_private">set:rustc_private</option>
-                    <option value="set:crates.io">set:crates.io</option>
+                    {
+                        scopes.map((scope, idx) => (
+                            <option value={scope} key={idx}>{scope}</option>
+                        ))
+                    }
                 </select>
                 <input type="text" {...register("query")} placeholder="Search for ..." />
             </form>

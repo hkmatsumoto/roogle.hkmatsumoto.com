@@ -1,11 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import Hit from "../components/hit";
+import { ScopesContext } from "../contexts/scopes";
 
-export default function Search() {
+type SearchProps = {
+    scopes: string[]
+}
+
+export default function Search({ scopes }: SearchProps) {
     const router = useRouter();
     const [hits, setHits] = useState([]);
+    const {setScopes} = useContext(ScopesContext);
+
+    useEffect(() => {
+        setScopes(scopes)
+    }, [setScopes])
 
     useEffect(() => {
         // NOTE: This is a workaround for *not* executing query before hydration; without this
@@ -42,4 +52,12 @@ export default function Search() {
             </ul>
         </div>
     )
+}
+
+export async function getStaticProps() {
+    return {
+        props: {
+            scopes: ["set:libstd"]
+        }
+    }
 }

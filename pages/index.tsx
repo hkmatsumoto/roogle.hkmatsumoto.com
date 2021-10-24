@@ -1,4 +1,7 @@
+import { useContext, useEffect } from "react";
 import Link from "next/link";
+
+import { ScopesContext } from "../contexts/scopes";
 
 type Example = {
   query: string,
@@ -17,7 +20,17 @@ const EXAMPLES: Example[] = [
   { query: "fn generics(TyCtxt, DefId) -> &Generics", scope: SET_RUSTC }
 ]
 
-export default function Home() {
+type HomeProps = {
+  scopes: string[]
+}
+
+export default function Home({ scopes }: HomeProps) {
+  const { setScopes } = useContext(ScopesContext);
+
+  useEffect(() => {
+    setScopes(scopes)
+  }, [setScopes])
+
   return (
     <div>
       <p>Examples</p>
@@ -35,4 +48,12 @@ export default function Home() {
       </ul>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      scopes: ["set:libstd"]
+    }
+  }
 }
