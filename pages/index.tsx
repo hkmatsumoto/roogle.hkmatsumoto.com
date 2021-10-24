@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import Link from "next/link";
 
 import { ScopesContext } from "../contexts/scopes";
+import getScopes from "../utils/scopes";
 
 type Example = {
   query: string,
@@ -53,7 +54,7 @@ export default function Home({ scopes }: HomeProps) {
 export async function getStaticProps() {
   return {
     props: {
-      scopes: ["set:libstd"]
+      scopes: getScopes()
     }
   }
 }

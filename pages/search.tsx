@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 
 import Hit from "../components/hit";
 import { ScopesContext } from "../contexts/scopes";
+import getScopes from "../utils/scopes";
 
 type SearchProps = {
     scopes: string[]
@@ -57,7 +58,7 @@ export default function Search({ scopes }: SearchProps) {
 export async function getStaticProps() {
     return {
         props: {
-            scopes: ["set:libstd"]
+            scopes: getScopes()
         }
     }
 }

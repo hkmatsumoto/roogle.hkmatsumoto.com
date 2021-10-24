@@ -12,7 +12,12 @@ type FormData = {
 
 export default function Header() {
     const router = useRouter();
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit } = useForm({
+        defaultValues: {
+            query: "",
+            scope: "set:libstd"
+        }
+    });
     const { scopes } = useContext(ScopesContext);
 
     const onSubmit = (data: FormData) => {
