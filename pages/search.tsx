@@ -29,22 +29,19 @@ export default function Search({ scopes }: SearchProps) {
 
   const execQuery = async () => {
     const params = new URLSearchParams(router.query as Record<string, string>)
-    await fetch(`http://localhost:8000/search?${params}`)
+    await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/search?${params}`)
       .then(response => response.json())
       .then(hits => setHits(hits))
       .catch((err) => console.error(err))
   }
 
   return (
-    <div>
-      <p>
-        Result for {router.query.query}
-      </p>
-      <ul>
+    <div className="flex flex-col items-baseline space-y-3 w-4/5 lg:w-2/3">
+      <ul className="flex flex-col space-y-3">
         {
           hits.map((hit, idx) => {
             return (
-              <li key={idx}>
+              <li key={idx} className="border border-black p-3">
                 <Hit hit={hit} />
               </li>
             )

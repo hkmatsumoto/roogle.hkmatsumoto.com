@@ -10,7 +10,7 @@ type Example = {
 }
 
 const SET_LIBSTD = "set:libstd"
-const SET_RUSTC = "set:rustc_private"
+const CRATE_RUSTC_MIDDLE = "crate:rustc_middle"
 
 const EXAMPLES: Example[] = [
   { query: "fn (&char) -> bool", scope: SET_LIBSTD },
@@ -18,7 +18,7 @@ const EXAMPLES: Example[] = [
   { query: "fn get_ref(&Option<T>) -> Option<&T>", scope: SET_LIBSTD },
   { query: "fn (Option<Option<T>>) -> Option<T>", scope: SET_LIBSTD },
   { query: "fn (&mut Vec<T>, &mut Vec<T>)", scope: SET_LIBSTD },
-  { query: "fn generics(TyCtxt, DefId) -> &Generics", scope: SET_RUSTC }
+  { query: "fn generics(TyCtxt, DefId) -> &Generics", scope: CRATE_RUSTC_MIDDLE }
 ]
 
 type HomeProps = {
@@ -33,8 +33,8 @@ export default function Home({ scopes }: HomeProps) {
   }, [setScopes])
 
   return (
-    <div>
-      <p>Examples</p>
+    <div className="flex flex-col items-baseline">
+      <p className="text-2xl">Examples</p>
       <ul>
         {EXAMPLES.map((example, idx) => (
           <li key={idx}>
@@ -42,7 +42,9 @@ export default function Home({ scopes }: HomeProps) {
               pathname: "/search",
               query: example
             }}>
-              {example.query}
+              <a className="font-mono link">
+                {example.query}
+              </a>
             </Link>
           </li>
         ))}

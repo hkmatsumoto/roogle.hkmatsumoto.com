@@ -1,0 +1,22 @@
+.markdown *  {
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.markdown h1 {
+    margin: 10px 0 0 0;
+}
+
+.markdown h2 {
+    margin: 10px 0 0 0;
+}
+
+.markdown p {
+    margin: 5px 0 0 0;
+    padding: 0;
+}
+
+.markdown pre {
+    margin: 0;
+    padding: 5px;
+}

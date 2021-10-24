@@ -1,3 +1,9 @@
+import ReactMarkdown from "react-markdown";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { githubGist } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
+import style from "../styles/markdown.module.css";
+
 type Hit = {
   name: string,
   path: string[],
@@ -13,13 +19,36 @@ export default function Hit({ hit }: HitProps) {
   let { path, link, docs } = hit;
 
   return (
-    <div>
-      <a href={constructLink(link)} target="_blank" rel="noreferrer">
+    <div className="flex flex-col">
+      <a href={constructLink(link)} target="_blank" rel="noreferrer" className="font-mono font-bold break-all text-2xl link">
         {path.join("::")}
       </a>
-      <p>
+      <p className="prose-sm">
         {
           docs
+            ? <ReactMarkdown className={style.markdown} components={{
+              code({ node, inline, className, children, ...props }) {
+                return !inline ? (
+                  <SyntaxHighlighter
+                    style={githubGist}
+                    language="rust"
+                    PreTag="div"
+                    customStyle={{padding: 0}}
+                    className="font-mono"
+                    {...props as any} // FIXME: Make this typecheck without an ugly assertion.
+                  >
+                    {String(children).replace(/\n$/, '')}
+                  </SyntaxHighlighter>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                )
+              }
+            }}>
+              {docs}
+            </ReactMarkdown>
+            : null
         }
       </p>
     </div>
