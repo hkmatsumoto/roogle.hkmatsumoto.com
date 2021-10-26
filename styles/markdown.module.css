@@ -1,4 +1,4 @@
-.markdown *  {
+.markdown {
     margin: 0 auto;
     padding: 0 auto;
 }
@@ -12,8 +12,18 @@
 }
 
 .markdown p {
-    margin: 5px 0 0 0;
     padding: 0;
+    margin: 5px 0 0 0;
+}
+
+.markdown ul {
+    padding: 0 0 0 25px;
+    margin: 12px 0;
+}
+
+.markdown ul > li {
+    padding: 0;
+    list-style: disc;
 }
 
 .markdown pre {

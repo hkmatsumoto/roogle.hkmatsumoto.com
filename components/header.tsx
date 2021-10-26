@@ -54,7 +54,7 @@ export default function Header() {
           }
         </select>
         <input type="text" {...register("query")} placeholder="Search for ..."
-          className="w-full font-mono text-2xl border focus:outline-none focus border-black focus:border-blue-600" />
+          className="w-full font-mono text-2xl p-2 border focus:outline-none focus border-black focus:border-blue-600" />
       </form>
     </div>
   )

@@ -4,17 +4,17 @@ module.exports = {
   theme: {
     fontFamily: {
       "logo": "Alfa Slab One",
-      "sans": "Fira Sans",
+      "sans": "Iosevka Aile Web",
       "serif": "Source Serif Pro",
-      "mono": "IBM Plex Mono"
+      "mono": "Iosevka Web"
     },
     extend: {
       typography: {
         "sm": {
           css: {
-            fontFamily: "Source Serif Pro",
+            fontFamily: "Source Serif Pro", // Using the font `docs.rs` uses.
             h1: {
-              fontFamily: "Fira Sans",
+              fontFamily: "Fira Sans", // Ditto
               fontSize: "1.5rem"
             },
           }

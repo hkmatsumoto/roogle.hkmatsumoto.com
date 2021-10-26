@@ -34,6 +34,7 @@ export default function Hit({ hit }: HitProps) {
                     language="rust"
                     PreTag="div"
                     customStyle={{padding: 0}}
+                    wrapLongLines={true}
                     className="font-mono"
                     {...props as any} // FIXME: Make this typecheck without an ugly assertion.
                   >
