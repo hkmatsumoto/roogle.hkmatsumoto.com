@@ -33,7 +33,7 @@ export default function Home({ scopes }: HomeProps) {
   }, [setScopes])
 
   return (
-    <div className="flex flex-col items-baseline">
+    <div className="flex flex-col items-center">
       <p className="text-2xl">Examples</p>
       <ul>
         {EXAMPLES.map((example, idx) => (

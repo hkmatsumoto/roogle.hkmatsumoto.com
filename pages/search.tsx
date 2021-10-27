@@ -36,7 +36,7 @@ export default function Search({ scopes }: SearchProps) {
   }
 
   return (
-    <div className="flex flex-col items-baseline space-y-3 w-4/5 lg:w-2/3">
+    <div className="flex flex-col items-baseline space-y-3 w-4/5 lg:w-1/2">
       <ul className="flex flex-col space-y-3">
         {
           hits.map((hit, idx) => {

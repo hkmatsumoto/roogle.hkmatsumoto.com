@@ -20,7 +20,7 @@ export default function Hit({ hit }: HitProps) {
 
   return (
     <div className="flex flex-col">
-      <a href={constructLink(link)} target="_blank" rel="noreferrer" className="font-mono font-bold break-all text-2xl link">
+      <a href={constructLink(link)} target="_blank" rel="noreferrer" className="font-mono font-semibold break-all text-2xl link">
         {path.join("::")}
       </a>
       <p className="prose-sm">

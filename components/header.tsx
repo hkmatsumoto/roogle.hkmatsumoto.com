@@ -40,13 +40,13 @@ export default function Header() {
   }
 
   return (
-    <div className="flex flex-col items-center w-4/5 lg:w-2/3 my-5 space-y-5">
+    <div className="flex flex-col items-center w-4/5 lg:w-1/2 m-5 space-y-5">
       <Link href="/">
         <a className="font-logo text-5xl">Roogle</a>
       </Link>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="flex w-full space-x-3">
-        <select {...register("scope")} className="font-mono text-sm max-w-xs overflow-ellipsis border border-black">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center items-center w-full">
+        <select {...register("scope")} className="font-mono p-1 focus border border-black focus:border-blue-600">
           {
             scopes.map((scope, idx) => (
               <option value={scope} key={idx}>{scope}</option>
@@ -54,7 +54,7 @@ export default function Header() {
           }
         </select>
         <input type="text" {...register("query")} placeholder="Search for ..."
-          className="w-full font-mono text-2xl p-2 border focus:outline-none focus border-black focus:border-blue-600" />
+          className="w-full font-mono font-bold text-2xl p-2 my-3 border focus:outline-none focus border-black focus:border-blue-600" />
       </form>
     </div>
   )
