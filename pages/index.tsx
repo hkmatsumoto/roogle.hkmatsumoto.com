@@ -10,7 +10,7 @@ type Example = {
 }
 
 const SET_LIBSTD = "set:libstd"
-const CRATE_RUSTC_MIDDLE = "crate:rustc_middle"
+const SET_RUSTC = "set:rustc"
 
 const EXAMPLES: Example[] = [
   { query: "fn (&char) -> bool", scope: SET_LIBSTD },
@@ -18,8 +18,8 @@ const EXAMPLES: Example[] = [
   { query: "fn get_ref(&Option<T>) -> Option<&T>", scope: SET_LIBSTD },
   { query: "fn (Option<Option<T>>) -> Option<T>", scope: SET_LIBSTD },
   { query: "fn (&mut Vec<T>, value: T)", scope: SET_LIBSTD },
-  { query: "fn generics(TyCtxt, key: _) -> &Generics", scope: CRATE_RUSTC_MIDDLE },
-  { query: "fn (TyCtxt, key: _) -> Span", scope: CRATE_RUSTC_MIDDLE }
+  { query: "fn generics(TyCtxt, key: _) -> &Generics", scope: SET_RUSTC },
+  { query: "fn (TyCtxt, key: _) -> Span", scope: SET_RUSTC }
 ]
 
 type HomeProps = {
