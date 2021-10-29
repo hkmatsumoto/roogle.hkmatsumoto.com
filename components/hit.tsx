@@ -59,6 +59,8 @@ export default function Hit({ hit }: HitProps) {
 const constructLink = (link: string[]): string => {
   if (["std", "core", "alloc"].includes(link[0])) {
     return `https://docs.rust-lang.org/nightly/${link.join('/')}`;
+  } else if (link[0].includes("rustc")) {
+    return `https://doc.rust-lang.org/nightly/nightly-rustc/${link.join('/')}`;
   } else if (link[0].includes("primitive")) {
     return `https://docs.rust-lang.org/nightly/std/${link.join('/')}`;
   } else {
