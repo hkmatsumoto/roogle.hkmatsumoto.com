@@ -17,8 +17,9 @@ const EXAMPLES: Example[] = [
   { query: "fn (&mut HashMap<K, V>, K, V) -> Option<V>", scope: SET_LIBSTD },
   { query: "fn get_ref(&Option<T>) -> Option<&T>", scope: SET_LIBSTD },
   { query: "fn (Option<Option<T>>) -> Option<T>", scope: SET_LIBSTD },
-  { query: "fn (&mut Vec<T>, &mut Vec<T>)", scope: SET_LIBSTD },
-  { query: "fn generics(TyCtxt, DefId) -> &Generics", scope: CRATE_RUSTC_MIDDLE }
+  { query: "fn (&mut Vec<T>, value: T)", scope: SET_LIBSTD },
+  { query: "fn generics(TyCtxt, key: _) -> &Generics", scope: CRATE_RUSTC_MIDDLE },
+  { query: "fn (TyCtxt, key: _) -> Span", scope: CRATE_RUSTC_MIDDLE }
 ]
 
 type HomeProps = {
@@ -33,7 +34,7 @@ export default function Home({ scopes }: HomeProps) {
   }, [setScopes])
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-4/5 lg:w-1/2">
       <p className="text-2xl">Examples</p>
       <ul>
         {EXAMPLES.map((example, idx) => (
