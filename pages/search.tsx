@@ -55,7 +55,7 @@ export default function Search({ scopes }: SearchProps) {
 export async function getStaticProps() {
   return {
     props: {
-      scopes: getScopes()
+      scopes: await getScopes()
     }
   }
 }

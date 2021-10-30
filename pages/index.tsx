@@ -57,7 +57,7 @@ export default function Home({ scopes }: HomeProps) {
 export async function getStaticProps() {
   return {
     props: {
-      scopes: getScopes()
+      scopes: await getScopes()
     }
   }
 }
