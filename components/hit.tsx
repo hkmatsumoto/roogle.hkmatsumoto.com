@@ -64,7 +64,6 @@ const constructLink = (link: string[]): string => {
   } else if (link[0].includes("primitive")) {
     return `https://docs.rust-lang.org/nightly/std/${link.join('/')}`;
   } else {
-    // FIXME: include crate version so that this link would work
-    return `https://docs.rs/${link.join('/')}`;
+    return `https://docs.rs/${link[0]}/latest/${link.join('/')}`;
   }
 }
