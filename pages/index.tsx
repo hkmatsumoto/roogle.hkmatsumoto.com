@@ -9,6 +9,7 @@ type Example = {
   scope: string,
 }
 
+const SET_CRATES = "set:crates"
 const SET_LIBSTD = "set:libstd"
 const SET_RUSTC = "set:rustc"
 
@@ -19,7 +20,8 @@ const EXAMPLES: Example[] = [
   { query: "fn (Option<Option<T>>) -> Option<T>", scope: SET_LIBSTD },
   { query: "fn (&mut Vec<T>, value: T)", scope: SET_LIBSTD },
   { query: "fn generics(TyCtxt, key: _) -> &Generics", scope: SET_RUSTC },
-  { query: "fn (TyCtxt, key: _) -> Span", scope: SET_RUSTC }
+  { query: "fn (TyCtxt, key: _) -> Span", scope: SET_RUSTC },
+  { query: "fn (Either<L, R>) -> Either<R, L>", scope: SET_CRATES }
 ]
 
 type HomeProps = {
